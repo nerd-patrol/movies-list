@@ -4,7 +4,15 @@ import { auth } from '../services/firebase.js';
 class Profile extends Component {
 
     render() {
+        const dom = this.renderDOM();
 
+        if(this.props.user) {
+            const button = dom.querySelector('button');
+            button.addEventListener('click', () => {
+                auth.signOut();
+            });
+        }
+        return dom;
     }
 
     renderTemplate() {
@@ -14,7 +22,7 @@ class Profile extends Component {
         }
 
         const avatar = user.photoURL || './assets/avatar.png';
-        
+
         return /*html*/ ` 
             <div class="profile">
                 <img src="${avatar}">
