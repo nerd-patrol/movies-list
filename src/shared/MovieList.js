@@ -6,16 +6,18 @@ class MovieList extends Component {
     render() {
         const list = this.renderDOM();
         
-        // this.props.forEach(movie => {
-        //     const movieItem = new MovieItem();
-        //     list.appendchild(movieItem.render());
-        // });
+        console.log(this.props.m);
+        this.props.movies.forEach(movie => {
+            const movieItem = new MovieItem({ movie });
+            list.appendChild(movieItem.render());
+        });
 
-        const movieItem = new MovieItem();
-        list.appendChild(movieItem.render());
+        // const movieItem = new MovieItem();
+        // list.appendChild(movieItem.render());
 
         return list;
     }
+
     renderTemplate() {
         return /*html*/ `
             <ul class="movie-list">
