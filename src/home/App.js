@@ -1,5 +1,6 @@
 import Component from '../Component.js';
 import Header from '../shared/Header.js';
+import MovieList from '../shared/MovieList.js';
 
 class App extends Component {
 
@@ -12,6 +13,11 @@ class App extends Component {
 
         const main = dom.querySelector('main');
         dom.insertBefore(headerDOM, main);
+
+        const movieList = new MovieList([]);
+        const movieListDOM = movieList.render();
+        dom.appendChild(movieListDOM, main);
+    
 
         return dom;
     }
