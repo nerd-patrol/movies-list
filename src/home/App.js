@@ -25,8 +25,11 @@ class App extends Component {
         dom.appendChild(movieListDOM, main);
 
         function loadMovies() {
+            const params = window.location.hash.slice(1);
+            const searchParams = new URLSearchParams(params);
+            const search = searchParams.get('query');
 
-            api.getMovies()
+            api.getMovies(search)
                 .then(movies => {
                     movieList.update({ movies: movies.results });
                 })
@@ -34,6 +37,11 @@ class App extends Component {
                     console.log(err);
                 });
         }
+
+
+        window.addEventListener('hashchange', () => {
+            loadMovies();
+        });
 
         loadMovies();
     
