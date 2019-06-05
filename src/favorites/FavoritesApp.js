@@ -14,10 +14,8 @@ class FavoritesApp extends Component {
         dom.insertBefore(headerDOM, main);
 
         const movieList = new MovieList({ movies: [] });
+        main.appendChild(movieList.render());
 
-        //TODO: implement loading some day?
-
-        //this is Marty's code, we gotta figure this out
         userFavoritesRef
             .child(auth.currentUser.uid)
             .on('value', snapshot => {
@@ -25,7 +23,6 @@ class FavoritesApp extends Component {
                 const movies = value ? Object.values(value) : [];
                 movieList.update({ movies });
             });
-
 
         return dom;
     }

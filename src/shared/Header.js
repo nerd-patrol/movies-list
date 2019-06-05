@@ -20,6 +20,9 @@ class Header extends Component {
         return /*html*/ `
             <header>
                 <h1>Movie List</h1>
+                <button>
+                <a href="./favorites.html">Favorites</a>
+                </button>
             </header>
         `;
     }

@@ -20,16 +20,13 @@ class MovieItem extends Component {
                     userMovieRef.set({
                         id: movie.id, 
                         title: movie.title,
-                        poster_path: movie.poster_path,
-
+                        poster_path: movie.poster_path
                     });
                 }
-                //TODO: make remove
                 else { 
                     userMovieRef.remove();
                 }
             }
-            
         });
         container.appendChild(favorite.render());
 
