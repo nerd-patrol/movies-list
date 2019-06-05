@@ -15,7 +15,7 @@ class FavoritesApp extends Component {
         //TODO: implement loading some day?
 
         //this is Marty's code, we gotta figure this out
-
+        
 
 
         return dom;
