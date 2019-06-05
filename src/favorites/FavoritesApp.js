@@ -1,5 +1,7 @@
 import Component from '../Component.js';
 import Header from '../shared/Header.js';
+import { auth, userFavoritesRef } from '../services/firebase.js';
+import MovieList from '../shared/MovieList.js';
 
 class FavoritesApp extends Component {
     
@@ -11,11 +13,18 @@ class FavoritesApp extends Component {
         const headerDOM = header.render();
         dom.insertBefore(headerDOM, main);
 
+        const movieList = new MovieList({ movies: [] });
 
         //TODO: implement loading some day?
 
         //this is Marty's code, we gotta figure this out
-        
+        userFavoritesRef
+            .child(auth.currentUser.uid)
+            .on('value', snapshot => {
+                const value = snapshot.val();
+                const movies = value ? Object.values(value) : [];
+                movieList.update({ movies });
+            });
 
 
         return dom;
