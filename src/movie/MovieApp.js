@@ -2,7 +2,7 @@ import Component from '../Component.js';
 import Header from '../shared/Header.js';
 import MovieDetail from './MovieDetail.js';
 import QUERY from '../QUERY.js';
-// import userFavoritesRef from '../services/firebase.js';
+import api from '../services/api.js';
 
 class MovieApp extends Component {
     
@@ -21,13 +21,18 @@ class MovieApp extends Component {
 
         const query = QUERY.parse(search);
         const id = query.id;
-        console.log(id);
-        
+
         if(!id) {
             window.location = './index.html';
         }
 
-        console.log(QUERY.parse(search));
+        api.getMovie(id)
+            .then(movie => {
+                console.log(movie);
+            })
+            .catch(err => {
+                console.log(err);
+            });
 
         return dom;
     }
