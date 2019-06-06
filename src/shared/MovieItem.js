@@ -47,6 +47,9 @@ class MovieItem extends Component {
                     <div class="favorite-container"></div>
                     <p class="movie-title">${movie.title}</p>
                     <img src="http://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title} movie poster">
+                    <a href="./movie.html?id=${movie.id}">
+                        <h2>${movie.title}</h2>
+                    </a>
                 </li>
             `;
         }
