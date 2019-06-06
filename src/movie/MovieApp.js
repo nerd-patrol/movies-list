@@ -28,7 +28,7 @@ class MovieApp extends Component {
 
         api.getMovie(id)
             .then(movie => {
-                console.log(movie);
+                movieDetail.update({ movie });
             })
             .catch(err => {
                 console.log(err);

@@ -1,6 +1,7 @@
 import Component from '../Component.js';
 import Favorite from '../shared/Favorite.js';
-import { auth, userFavoritesRef } from '../services/firebase.js';
+import { updateFavorite, getUserMovieFavoritesRef } from '../services/actions.js';
+import UserList from '../users/UserList.js';
 
 class MovieItem extends Component {
 
@@ -8,24 +9,13 @@ class MovieItem extends Component {
         const dom = this.renderDOM();
         const movie = this.props.movie;
         
-        const userMovieRef = userFavoritesRef
-            .child(auth.currentUser.uid)
-            .child(movie.id);
+        const userMovieRef = getUserMovieFavoritesRef(movie.id);
         
         const container = dom.querySelector('.favorite-container');
         const favorite = new Favorite({ 
             isFavorite: false,
             onFavorite: (makeFavorite) => {
-                if(makeFavorite) {
-                    userMovieRef.set({
-                        id: movie.id, 
-                        title: movie.title,
-                        poster_path: movie.poster_path
-                    });
-                }
-                else { 
-                    userMovieRef.remove();
-                }
+                updateFavorite(movie, makeFavorite);
             }
         });
         container.appendChild(favorite.render());
@@ -34,6 +24,10 @@ class MovieItem extends Component {
             const isFavorite = Boolean(snapshot.val());
             favorite.update({ isFavorite });
         });
+
+        const userList = new UserList();
+        dom.appendChild(userList.render());
+        
         
         return dom;
     }
