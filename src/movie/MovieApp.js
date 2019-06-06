@@ -1,6 +1,7 @@
 import Component from '../Component.js';
 import Header from '../shared/Header.js';
 import MovieDetail from './MovieDetail.js';
+import QUERY from '../QUERY.js';
 // import userFavoritesRef from '../services/firebase.js';
 
 class MovieApp extends Component {
@@ -15,6 +16,18 @@ class MovieApp extends Component {
 
         const movieDetail = new MovieDetail();
         main.appendChild(movieDetail.render());
+
+        const search = window.location.search.slice(1);
+
+        const query = QUERY.parse(search);
+        const id = query.id;
+        console.log(id);
+        
+        if(!id) {
+            window.location = './index.html';
+        }
+
+        console.log(QUERY.parse(search));
 
         return dom;
     }
