@@ -1,4 +1,4 @@
-import UserItem  from '../src/users/UserItem.js';
+import UserItem from '../src/users/UserItem.js';
 const test = QUnit.test;
 
 QUnit.module('User Item Component');
