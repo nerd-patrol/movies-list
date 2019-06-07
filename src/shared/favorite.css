@@ -1,0 +1,13 @@
+.favorite-star {
+    cursor: pointer;
+    color: #ddd;
+    user-select: none;
+    outline: none;
+    border: 0;
+    background: none;
+    font-size: 1.1em;
+ }
+ 
+ .favorite-star.favorite {
+    color: gold;
+ }
