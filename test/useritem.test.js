@@ -15,7 +15,7 @@ test('renders. at all.', assert => {
 
     const expected = /*html*/`
         <li>
-        <a href="">Person Person Fella</a>
+        <a href="./favorites.html?uid=123">Person Person Fella</a>
         </li>
     `;
 
