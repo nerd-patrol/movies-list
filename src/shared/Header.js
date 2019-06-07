@@ -17,9 +17,10 @@ class Header extends Component {
     }
 
     renderTemplate() {
+        const title = this.props.title || document.title;
         return /*html*/ `
             <header>
-                <h1>Movie List</h1>
+                <h1>${title}</h1>
                 <button>
                 <a href="./favorites.html">Favorites</a>
                 </button>

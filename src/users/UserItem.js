@@ -6,7 +6,7 @@ class UserItem extends Component {
         const user = this.props.user;
         return /*html*/ `
             <li>
-                <a href="">${user.displayName}</a>
+                <a href="./favorites.html?uid=${user.uid}">${user.displayName}</a>
             </li>
         `;
     }
